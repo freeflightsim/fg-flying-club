@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1;">
+<title>{{ page_title }} - {{ conf.SITE_TITLE }}</title>
+
+<link rel="SHORTCUT ICON" href="favicon.ico">
+
+<link rel="stylesheet" type="text/css" href="{{ conf.CDN }}/js/ext-3.2.0/resources/css/ext-all.css">
+
+
+<link rel="stylesheet" type="text/css" href="{{ conf.CDN }}/style_sheets/reset.css">
+<link rel="stylesheet" type="text/css" href="/style_sheets/launch.1.css">
+
+<script type="text/javascript" src="{{ conf.CDN }}/js/ext-3.2.0/adapter/ext/ext-base.js"></script>
+<script type="text/javascript" src="{{ conf.CDN }}/js/ext-3.2.0/ext-all.js"></script>
+<script type="text/javascript" src="/js/StaticTextField.js"></script>
+<script type="text/javascript" src="/js/FileUploadField.js"></script>
+<script type="text/javascript" src="/js/Ext.fp.1.js"></script>
+<script type="text/javascript" src="/js/FP_Dialog.1.js"></script>
+<script type="text/javascript" src="/js/FP_Grid.1.js"></script>
+<script type="text/javascript" src="/js/TL_Grid.1.js"></script>
+<script type="text/javascript" src="/js/FP_UserForm.1.js"></script>
+<script type="text/javascript" src="/js/FP_PlansPane.1.js"></script>
+<script type="text/javascript" src="/js/FP_PlanDialog.1.js"></script>
+
+</head> 
+<body onload="startInit()"> 
+
+<!--### Header ########################-->
+<!--<div id="header_box">
+	<h2>Open Source Flight Simulation with FlightGear</h2>
+	<h1>Free Flight Sim.org</h1>
+</div> -->
+
+<div id="main_container">
+
+
+
+
+
+
+	<!--### Navigation ########################-->
+	<div id="site_nav_box">
+
+		<div id="fg_logo">
+			<img src="{{ conf.CDN}}/images/fg2.png" alt="FlightGear">
+			<div id="real_time">&nbsp;</div>
+			<div id="real_date">&nbsp;</div> 
+		</div>
+
+		<ul id="navlist">
+			<!---<li><a class="action" href="javascript:showFPDialog();" >Add Entry</a>-->
+			{% for n in appo.nav %}
+			<li><a {% ifequal path n.path  %}class="selected"{% endifequal %} href="{{ n.path }}" >{{ n.label }}</a>
+			{% endfor %}
+			{% if sessID %}
+			<li><a {% ifequal path '/profile/'  %}class="selected"{% endifequal %} href="/profile/" >My Profile</a>
+			<li><a  href="javascript:signOut();" >Sign Out</a>
+			{% else %}
+			<li><a {% ifequal path '/signin/'  %}class="selected"{% endifequal %} href="/signin/" >Sign In</a>
+			{% endif %}
+		</ul>
+
+		<ul class="txt">
+			<li><a href="http://flightgear.org/forums/viewforum.php?f=10">FlightGear Forum</a></li>
+			<li><a href="http://flightgearfans.wordpress.com">FlightGear Fans</a></li>
+		</ul>
+		{% if user %}<p><a href="{{ logout_url }}">Logout</a></p>{% endif %}
+
+
+
+	</div>
+	
+	<div id="site_title">
+		<h1>Flying Club</h1>
+	</div>
+
+	<!--### Main Content ########################-->
+
+
+		{% block content %}
+		content here
+		{% endblock content %}
+
+			<!--### Comment Box ########################-->
+			<div id="comment_box">
+				<h5>Bugs, Comments and Suggestions</h5>
+				{% for c in comments %}
+					<h6><i>{{ c.author.nickname }}</i> at {{ c.dated }}</h6>
+					<p>sss{{ c.comment }}</p>
+				{% endfor %}
+				<form action="/comment/" method="post">
+					<input type="hidden" value="add_comment" name="action">
+					<input type="hidden" value="{{ section }}" name="section">
+					<textarea style="width: 100%; " rows="5" name="comment"></textarea>
+					<input type="submit" value="Add Comment">
+				</form>
+			</div><!-- end footer-->
+
+
+
+
+
+
+
+	<!--### Navigation ########################-->
+	<div id="footer_box">
+		<p>
+		<a href="https://appengine.google.com/dashboard?&app_id={{ conf.APP_ID }}">Dashboard</a> -
+		<a href="http://github.com/FreeFlightSim/ffs-app-engine/tree/master/{{ conf.APP_ID }}.appspot.com/">Git</a> - 
+		&copy;{% now "Y" %} FreeFlightSim.org - all right reserved etc<br>
+		{{ sessID }}
+	</div><!-- end footer-->
+     
+	
+   
+
+
+</div><!-- main cotainer -->
+
+
+
+
+</body> 
+
+
+
+
+</html>

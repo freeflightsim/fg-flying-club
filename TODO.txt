@@ -1,0 +1,14 @@
+If you can help contact pete@freeflightsim.org or any other members
+
+
+=== Wanted ===
+
+Graphic Designer to create
+* Logo - favicon, large, small, banner, ascii art in svg, png, jpeg
+* Color pallete and font style
+
+Internationalization
+* Different languages - and a plan on how to implement !!
+* Total Global World Domaination :-)
+
+

@@ -1,0 +1,15 @@
+{% extends "../main_container.html" %}
+
+{% block content %}
+<div id="content_box">
+
+<h2>Sign In</h2>
+<div style="margin: 100px; height: 500px;">
+<iframe src="http://freeflightsim.rpxnow.com/openid/embed?token_url={{ conf.SERVER }}/auth/" scrolling="no" frameBorder="no" allowtransparency="true" style="width:400px;height:240px"></iframe>
+
+<p><br><br>Or, if you don't have an OpenID through any of the above, 
+<a href="https://www.myopenid.com/signup">click here to sign up!</a></p>
+</div>
+
+</div>
+{% endblock content %}

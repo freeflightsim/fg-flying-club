@@ -1,0 +1,25 @@
+{% extends "../main_container.html" %}
+
+{% block content %}
+<div id="content_box">
+<div id="grid_div"></div>
+
+<!--### Help ########################-->
+<div id="help_text_div" class="x-hide-display"> 
+	<p>This site is work in progress and is subject to change. Please leave your comments and suggestions.</p> 
+	<p>The general idea at the moment is to create a flight, and mark the departure/arrival airport and time.</p>
+	<p>ATC controllers can then see an event that needs coverage, and can do so bu entering their callsign in the box.</p>
+	<p>I'm still trying to figure out colour coding, eg purple for no atc, or green for atc present etc.</p>
+	<p>The ATC's interface is coming next.</p>
+</div> 
+
+
+<script>
+
+Ext.onReady(function(){
+	var mainWidget = new FP_MainWidget();
+});
+
+</script>
+</div>
+{% endblock content %}

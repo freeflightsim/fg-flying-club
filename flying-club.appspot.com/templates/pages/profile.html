@@ -1,0 +1,24 @@
+{% extends "../main_container.html" %}
+
+{% block content %}
+
+<div id="content_box">
+
+<h2>My Profile</h2>
+
+{% if welcome  %}
+<P style="text-align: center; padding: 10px; margin: 10px 100px 10px 100px; background-color: #FAFFBA;">Welcome, please take a few moments to fill out this profile</p>
+{% endif %}
+<div id="profile_widget_div" style="width: 600px; margin: 10px auto;"></div>
+
+<script>
+
+Ext.onReady(function(){
+	var profileWidget = new FP_UserForm();
+});
+
+</script>
+
+
+</div>
+{% endblock content %}
