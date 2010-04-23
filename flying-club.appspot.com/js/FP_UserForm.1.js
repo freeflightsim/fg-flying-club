@@ -34,25 +34,28 @@ this.frm = new Ext.FormPanel({
     bodyStyle: 'border: none; padding: 10px',
 	labelPad: 10,
     waitMsgTarget: true,
-    items: [
-			{fieldLabel: 'Full Name', xtype: 'textfield',  emptyText: 'eg Linus Torvalds',
-				allowBlank: false, minLength: 3, name: 'name', width: '50%', msgTarget: 'side'},
-			{fieldLabel: 'Email', xtype: 'textfield',  emptyText: 'Required for updates', name: 'email', width: '80%', msgTarget: 'side',allowBlank: true},
-
-			{fieldLabel: 'CallSign', xtype: 'textfield',  name: 'callsign', width: '20%', msgTarget: 'side', allowBlank: false },
-			{fieldLabel: 'Pilot', xtype: 'checkbox',  name: 'pilot', boxLabel: 'Check if your a pilot' },
-			{fieldLabel: 'ATC', xtype: 'checkbox',  name: 'atc', boxLabel: 'Check if you can atc'},
-			{fieldLabel: 'fgCom', xtype: 'checkbox',  name: 'fgcom' , boxLabel: 'Check if you use fgCom'},
-
-			{fieldLabel: 'Irc Nick', xtype: 'textfield',  name: 'irc', width: '20%', msgTarget: 'side'},
-			{fieldLabel: 'Forum User', xtype: 'textfield',  name: 'forum', width: '20%', msgTarget: 'side'},
-			{fieldLabel: 'Wiki User', xtype: 'textfield',  name: 'wiki', width: '20%', msgTarget: 'side'},
-			{fieldLabel: 'Cvs Account', xtype: 'textfield',  name: 'cvs', width: '20%', msgTarget: 'side'},
-			{fieldLabel: 'Location', xtype: 'textfield',  name: 'location', width: '80%', msgTarget: 'side', emptyText: 'eg Town, Country'},
-			{fieldLabel: 'Created', xtype: 'statictextfield',  name: 'date_created'},
-			{fieldLabel: 'Identity', xtype: 'statictextfield',  name: 'ident'}
+    items: [ {title: 'General Details', xtype: 'fieldset', items: [
+				{fieldLabel: 'Full Name', xtype: 'textfield',  emptyText: 'eg Linus Torvalds',
+					allowBlank: false, minLength: 3, name: 'name', width: '50%', msgTarget: 'side'},
+				{fieldLabel: 'Email', xtype: 'textfield',  emptyText: 'Required for updates', name: 'email', width: '80%', msgTarget: 'side',allowBlank: true},
+				{fieldLabel: 'Location', xtype: 'textfield',  name: 'location', width: '80%', msgTarget: 'side', emptyText: 'eg Town, Country'},
+				{fieldLabel: 'Created', xtype: 'statictextfield',  name: 'date_created'},
+				{fieldLabel: 'Identity', xtype: 'statictextfield',  name: 'ident'}
+			]},
+			{title: 'Online', xtype: 'fieldset', items: [
+				{fieldLabel: 'CallSign', xtype: 'textfield',  name: 'callsign', width: '20%', msgTarget: 'side', allowBlank: false },
+				{fieldLabel: 'Pilot', xtype: 'checkbox',  name: 'pilot', boxLabel: 'Check if your a pilot' },
+				{fieldLabel: 'ATC', xtype: 'checkbox',  name: 'atc', boxLabel: 'Check if you can atc'},
+				{fieldLabel: 'fgCom', xtype: 'checkbox',  name: 'fgcom' , boxLabel: 'Check if you use fgCom'},
+			]},
+			{title: 'Related Idents', xtype: 'fieldset', items: [
+				{fieldLabel: 'Irc Nick', xtype: 'textfield',  name: 'irc', width: '20%', msgTarget: 'side'},
+				{fieldLabel: 'Forum User', xtype: 'textfield',  name: 'forum', width: '20%', msgTarget: 'side'},
+				{fieldLabel: 'Wiki User', xtype: 'textfield',  name: 'wiki', width: '20%', msgTarget: 'side'},
+				{fieldLabel: 'Cvs Account', xtype: 'textfield',  name: 'cvs', width: '20%', msgTarget: 'side'},
+			]}
     ],
-	buttonAlign: 'center',
+	buttonAlign: 'right',
     buttons: [  {text: 'Update', iconCls: 'icoSave', 
                     handler: function(){
                         if(self.frm.getForm().isValid()){

@@ -9,7 +9,7 @@ from google.appengine.api import mail
 from BeautifulSoup.BeautifulSoup import BeautifulSoup
 
 import conf
-from app.models import FPp, Comment, Plan
+from app.models import Schedule, Comment, Plan
 
 from data.airports import airports
 
@@ -242,13 +242,14 @@ class RpcHandler(webapp.RequestHandler):
 														cook_str
 					)
 			else:
-				crew = db.get( db.Key(sessID) )
-				reply['crew'] = [{'name': crew.name, 'email': crew.email, 'callsign': crew.callsign,
+				crew = db.get( db.Key(crewID) )
+				reply['crew'] = crew.to_json(True)
+				"""reply['crew'] = [{'name': crew.name, 'email': crew.email, 'callsign': crew.callsign,
 								 'cvs': crew.cvs, 'forum': crew.forum, 'irc': crew.irc, 'wiki': crew.wiki,
 								'pilot': crew.pilot, 'atc': crew.atc, 'fgcom': crew.fgcom, 
 								'date_created': crew.date_created.strftime(conf.MYSQL_DATETIME),
 								'location': crew.location, 'ident': crew.ident
-								}]
+								}]"""
 
 
 

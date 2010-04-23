@@ -1,18 +1,9 @@
 # -*- coding: utf-8 -*-
 from google.appengine.ext import db
 
-"""
-The Data Definition
-"""
-
-class Comment(db.Model):
-	comment =  db.StringProperty(multiline=True)
-	section = db.StringProperty(indexed=True)
-	dated = db.DateTimeProperty(indexed=True, auto_now_add=True)
-	author = db.UserProperty()
-
-
-
+########################################################
+## Crew Member
+########################################################
 class Crew(db.Model):
 	ident =  db.StringProperty(indexed=True)
 	name = db.StringProperty(indexed=True)
@@ -27,13 +18,41 @@ class Crew(db.Model):
 	fgcom = db.BooleanProperty()
 	date_created = db.DateTimeProperty(indexed=True, auto_now_add=True)
 	location = db.StringProperty()
-	
+	token = db.StringProperty()
+	auth =db.BooleanProperty()
+
+	def json(self, secure=False):
+		dic= {
+				'ident': self.ident,
+				'name': self.name,  
+				'callsign': self.callsign,
+				'cvs': self.cvs, 
+				'forum': self.forum, 
+				'irc': self.irc, 
+				'wiki': self.wiki,
+				'pilot': self.pilot, 
+				'atc': self.atc, 
+				'fgcom': self.fgcom, 
+				'date_created': crew.date_created.strftime(conf.MYSQL_DATETIME),
+				'location': self.location
+		}
+		if secure:
+			dic['email'] = self.email
+		return dic
 
 
 
-class FPp(db.Model):
-	cookie = db.StringProperty(indexed=True)
-	callsign = db.StringProperty(indexed=True, required=True)
+
+class Comment(db.Model):
+	comment =  db.StringProperty(multiline=True)
+	section = db.StringProperty(indexed=True)
+	dated = db.DateTimeProperty(indexed=True, auto_now_add=True)
+	author = db.UserProperty()
+
+
+
+class Schedule(db.Model):
+	pilot = db.ReferenceProperty(Crew)
 	dep =  db.StringProperty(indexed=True)
 	dep_date = db.DateTimeProperty(indexed=True)
 	dep_atc =  db.StringProperty(indexed=True)
@@ -41,7 +60,7 @@ class FPp(db.Model):
 	arr_date = db.DateTimeProperty(indexed=True)
 	arr_atc =  db.StringProperty(indexed=True)
 	comment =  db.StringProperty(multiline=True)
-	email = db.StringProperty()
+	
 
 
 class Plan(db.Model):

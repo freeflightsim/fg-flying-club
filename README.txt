@@ -8,7 +8,8 @@
                          |___/         |___/   
 
 --------------------------------------------------------------------
-         --- http://flying-club.freeflightsim.org ---
+Deployed : http://flying-club.freeflightsim.org 
+AppEngine: http://flying-club.appengine.com
 --------------------------------------------------------------------
 
 Developer: Pete Morgan <pete@FreeFlightSim.org>

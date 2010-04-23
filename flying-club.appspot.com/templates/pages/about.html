@@ -3,23 +3,35 @@
 
 {% block content %}
 	<div id="content_box">
-<h2>About this site</h2>
-
-<p>This Virtual Flying Club was made available by Piloter & many supporters. This club was established on 1 Feb 2010. If you spot any mistakes on our website, please feel free to send feedback to us. Your efforts will be greatly appreciated.</p>
-
-<p>What is this virtual flying club for?</p>
-
-<p>ANS: So that we can do more intresting things like flying together in groups or have  competitions rather than just flying solo.</p>
-
-<p>Flying Club Forums at http://www.flightgear.org/forums/viewtopic.php?f=10&t=7771</p>
-
-<!---
-<h3>Links</h3>
-<p>
-Bugs and Feature Requests: <a href="http://code.google.com/p/freeflightsim/issues/list">http://code.google.com/p/freeflightsim/issues/list</a></p>
-<p>Wiki: <a href="http://code.google.com/p/freeflightsim/">http://code.google.com/p/freeflightsim/</a></p>
-<p>Source: <a href="http://github.com/FreeFlightSim/ffs-app-engine">http://github.com/FreeFlightSim/flying-club</a></p>
---->
-
+<h2>About</h2>
+<div id='chart_div' style="margin-left: 100px; border: none;"></div>
+ <script type='text/javascript' src='http://www.google.com/jsapi'></script>
+    <script type='text/javascript'>
+      google.load('visualization', '1', {packages:['orgchart']});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Name');
+        data.addColumn('string', 'Manager');
+        data.addColumn('string', 'ToolTip');
+        data.addRows([
+[{v:'Piloter', f:'Piloter<div style="color:blue; font-style:italic">President</div>'}, '', 'Piloter, our President'],
+[{v:'Trennor', f:'Trennor<div style="color:blue; font-style:italic">Vice President<div>'}, 'Piloter', 'Piloter, our Vice President'],
+[{v:'Activity', f:'&nbsp;<div style="color:blue; font-style:italic">Activity Dept<div>'}, 'Trennor', 'VP'],
+[{v:'Treen', f:'Treen<div style="color:blue; font-style:italic">Manager<div>'}, 'Activity', ''],
+[{v:'Reeed', f:'Reeed<div style="color:blue; font-style:italic">Manager<div>'}, 'Activity', ''],
+[{v:'gargleflump', f:'gargleflump<div style="color:brows; font-style:italic">Co-Manager<div>'}, 'Activity', ''],
+[{v:'ac001', f:'ac001<div style="color:blue; font-style:italic">Web/IT Director<div>'}, 'Trennor', ''],
+[{v:'command', f:'&nbsp;<div style="color:blue; font-style:italic">Commanders<div>'}, 'Trennor', ''],
+[{v:'v1', f:'- vacant -<div style="color:blue; font-style:italic">Commander<div>'}, 'command', ''],
+[{v:'v2', f:'- vacant -<div style="color:blue; font-style:italic">Co-Commander<div>'}, 'command', ''],
+[{v:'atc', f:'-vacant-<div style="color:blue; font-style:italic">ATC Director<div>'}, 'Trennor', ''],
+[{v:'v3', f:'- vacant -<div style="color:blue; font-style:italic">Ground Operations<div>'}, 'Trennor', '']
+        ]);
+		//** IF of Node / Parent Node / Tooltop test
+        var chart = new google.visualization.OrgChart(document.getElementById('chart_div'));
+        chart.draw(data, {allowHtml:true});
+      }
+    </script>
 </div>
 {% endblock content %}

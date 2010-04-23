@@ -6,14 +6,13 @@ if os.environ.get('SERVER_SOFTWARE','').startswith('Devel'):
 	SERVER = 'http://localhost:8080'
 else:
 	DEBUG = False
-	SERVER = 'http://schedule.freeflightsim.org'
+	SERVER = 'http://flying-club.freeflightsim.org'
 
 APP_ID = 'flying-club'
 
 tm = "<span class='tm'>FreeFlightSim</span>" #&#0174;
 
-SITE_TITLE = "FlightGear calendar at FreeFlightSim.org"
-SITE_HEADER = "Free Flight Simulation"
+SITE_TITLE = "FlightGear Flying Club"
 
 GOOGLE_PROJECT = "freeflightsim"
 ISSUES_FEED = 'http://code.google.com/feeds/issues/p/freeflightsim/issues/full'
@@ -22,8 +21,9 @@ ISSUES_FEED = 'http://code.google.com/feeds/issues/p/freeflightsim/issues/full'
 #MP_STATUS_URL = "http://mpmap01.flightgear.org/mpstatus/"
 #MP_PILOTS_URL = "http://mpmap02.flightgear.org/fg_server_xml.cgi?mpserver02.flightgear.org:5001"
 
+## Location of Javascript libs etc on CDN
 CDN = 'http://ffs-cache.appspot.com'
-#CDN = ''
+
 
 ##########################################################
 ## Langs - TODO add links
