@@ -4,18 +4,16 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1;">
-<title>{{ page_title }} - {{ conf.SITE_TITLE }}</title>
+<title>{{ app.page_title }} - {{ app.conf.SITE_TITLE }}</title>
 
 <link rel="SHORTCUT ICON" href="favicon.ico">
 
-<link rel="stylesheet" type="text/css" shref="{{ conf.CDN }}/js/ext-3.2.0/resources/css/ext-all.css">
-
-
-<link rel="stylesheet" type="text/css" href="{{ conf.CDN }}/style_sheets/reset.css">
+<link rel="stylesheet" type="text/css" href="{{ app.conf.CDN }}/style_sheets/reset.css">
+<link rel="stylesheet" type="text/css" href="{{ app.conf.CDN }}/js/ext-3.2.0/resources/css/ext-all.css">
 <link rel="stylesheet" type="text/css" href="/style_sheets/launch.1.css">
 
-<script type="text/javascript" src="{{ conf.CDN }}/js/ext-3.2.0/adapter/ext/ext-base.js"></script>
-<script type="text/javascript" src="{{ conf.CDN }}/js/ext-3.2.0/ext-all.js"></script>
+<script type="text/javascript" src="{{ app.conf.CDN }}/js/ext-3.2.0/adapter/ext/ext-base.js"></script>
+<script type="text/javascript" src="{{ app.conf.CDN }}/js/ext-3.2.0/ext-all.js"></script>
 <script type="text/javascript" src="/js/StaticTextField.js"></script>
 <script type="text/javascript" src="/js/FileUploadField.js"></script>
 <script type="text/javascript" src="/js/Ext.fp.1.js"></script>
@@ -46,21 +44,21 @@
 	<div id="site_nav_box">
 
 		<div id="fg_logo">
-			<img src="{{ conf.CDN}}/images/fg2.png" alt="FlightGear">
+			<img src="{{ app.conf.CDN}}/images/fg2.png" alt="FlightGear">
 			<div id="real_time">&nbsp;</div>
 			<div id="real_date">&nbsp;</div> 
 		</div>
 
 		<ul id="navlist">
 			<!---<li><a class="action" href="javascript:showFPDialog();" >Add Entry</a>-->
-			{% for n in appo.nav %}
-			<li><a {% ifequal path n.path  %}class="selected"{% endifequal %} href="{{ n.path }}" >{{ n.label }}</a>
+			{% for n in app.nav %}
+			<li><a {% ifequal app.path n.path  %}class="selected"{% endifequal %} href="{{ n.path }}" >{{ n.label }}</a>
 			{% endfor %}
 			{% if sessID %}
-			<li><a {% ifequal path '/profile/'  %}class="selected"{% endifequal %} href="/profile/" >My Profile</a>
+			<li><a {% ifequal app.path '/profile/'  %}class="selected"{% endifequal %} href="/profile/" >My Profile</a>
 			<li><a  href="javascript:signOut();" >Sign Out</a>
 			{% else %}
-			<li><a {% ifequal path '/signin/'  %}class="selected"{% endifequal %} href="/signin/" >Sign In</a>
+			<li><a {% ifequal path '/auth/'  %}class="selected"{% endifequal %} href="/auth/" >Sign In</a>
 			{% endif %}
 		</ul>
 
@@ -84,8 +82,9 @@
 		{% block content %}
 		content here
 		{% endblock content %}
-
+			
 			<!--### Comment Box ########################-->
+			<!---
 			<div id="comment_box">
 				<h5>Bugs, Comments and Suggestions</h5>
 				{% for c in comments %}
@@ -98,7 +97,9 @@
 					<textarea style="width: 100%; " rows="5" name="comment"></textarea>
 					<input type="submit" value="Add Comment">
 				</form>
-			</div><!-- end footer-->
+			</div>
+			--->
+			<!-- end footer-->
 
 
 
@@ -112,7 +113,7 @@
 		<a href="https://appengine.google.com/dashboard?&app_id={{ conf.APP_ID }}">Dashboard</a> -
 		<a href="http://github.com/FreeFlightSim/ffs-app-engine/tree/master/{{ conf.APP_ID }}.appspot.com/">Git</a> - 
 		&copy;{% now "Y" %} FreeFlightSim.org - all right reserved etc<br>
-		{{ sessID }}
+		crewID={{ app.crewID }} section={{ app.section }} page={{ app.page }}
 	</div><!-- end footer-->
      
 	

@@ -5,11 +5,13 @@ from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 
 import conf
-
+import app.AuthHandler
 import app.MainHandler
 import app.RpcHandler
 
-application = webapp.WSGIApplication([	('/rpc/(.*)/(.*)/', 	app.RpcHandler.RpcHandler),
+application = webapp.WSGIApplication([	('/auth/(.*)/', 			app.AuthHandler.AuthHandler),
+										('/auth/', 				app.AuthHandler.AuthHandler),
+										('/rpc/(.*)/', 			app.RpcHandler.RpcHandler),
 										('/rpc/(.*)/', 			app.RpcHandler.RpcHandler),
 										('/(.*)/(.*)/', 		app.MainHandler.MainHandler),
 										('/(.*)/', 				app.MainHandler.MainHandler),

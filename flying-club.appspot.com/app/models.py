@@ -21,6 +21,9 @@ class Crew(db.Model):
 	token = db.StringProperty()
 	auth =db.BooleanProperty()
 
+	def id(self):
+		return str(self.key())
+
 	def json(self, secure=False):
 		dic= {
 				'ident': self.ident,

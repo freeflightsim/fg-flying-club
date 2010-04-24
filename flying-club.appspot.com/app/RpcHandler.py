@@ -14,6 +14,9 @@ from app.models import Schedule, Comment, Plan
 from data.airports import airports
 
 
+
+
+
 class RpcHandler(webapp.RequestHandler):
 
 
@@ -217,9 +220,10 @@ class RpcHandler(webapp.RequestHandler):
 		########################################################
 		### Crew
 		elif section == 'crew':
-			if 'sessID' in self.request.cookies:
-				sessID  = self.request.cookies['sessID'] 
-			
+			if 'crewID' in self.request.cookies:
+				sessID  = self.request.cookies['crewID'] 
+			else:
+				crewID = None
 			if page == 'edit':
 					crew = db.get( db.Key(sessID) )
 					crew.name = self.request.get('name')
